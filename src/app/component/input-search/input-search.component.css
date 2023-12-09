@@ -1,0 +1,28 @@
+.section_search{
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+.section_search-input{
+  width: 100%;
+  background-color: var(--primary-color);
+  border: none;
+  outline: none;
+  font-size: 3rem;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 40px;
+  padding: 12px 12px 12px 60px;
+  color: var(--terciary-color);
+}
+.section_search-input::placeholder{
+  color: var(--secondary-color);
+}
+.section_search-icon{
+  cursor: text;
+  width: 85px;
+  position: absolute;
+  left: 0;
+  padding: 16px;
+  padding-left: 12px;
+  height: 100%;
+}

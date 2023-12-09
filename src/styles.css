@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+  --primary-color: #FF31D9;
+  --secondary-color: #9A0E79;
+  --terciary-color: #55003F;
+  background-color:var(--terciary-color);
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  src: url('./assets/fonts/BarlowCondensed-Light.ttf'), format('.ttf');
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'Barlow Condensed';
+  src: url('./assets/fonts/BarlowCondensed-Medium.ttf'), format('.ttf');
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/fonts/Montserrat-Light.ttf'), format('.ttf');
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/fonts/Montserrat-SemiBold.ttf'), format('.ttf');
+  font-weight: 400;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+app-root{
+  display: flex;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
