@@ -1,5 +1,6 @@
 .section_search{
   width: 100%;
+  min-width: 170px;
   position: relative;
   height: auto;
 }

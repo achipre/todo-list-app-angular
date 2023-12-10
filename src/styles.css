@@ -38,4 +38,6 @@ app-root{
   display: flex;
   margin-top: 32px;
   margin-bottom: 32px;
+  justify-content: space-evenly;
+  min-height: 220px;
 }

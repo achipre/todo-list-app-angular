@@ -1,15 +1,49 @@
 aside{
+  width: 100%;
 }
 app-frameworks{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  height: 100vh;
+  height: calc(100vh - 64px);
 }
 main{
-  max-width: 1200px;
+  max-width:1176px;
+  width: calc(100% - 220px);
+  padding-left: 24px;
+  padding-right: 24px;
+}
+header{
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.github-profile{
+  width: 100px;
+  height: 100px;
+}
+article{
+  position: relative;
   width: 100%;
-  padding-left: 36px;
-  padding-right: 36px;
+  min-width: 170px;
+  height: calc(100vh - 202px);
+}
+@media (width < 699px) {
+  aside {
+    display: none;
+  }
+  main{
+    width: 100%;
+  }
+
+
+}
+@media (width < 320px) {
+  main{
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+
 }

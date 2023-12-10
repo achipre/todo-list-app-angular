@@ -1,1 +1,34 @@
-<p>section-category works!</p>
+<div class="section-categories">
+  <svg class="section-categories__iconFilter" width="80" height="100" viewBox="0 0 100 100" fill="#FF31D9">
+    <path d="M90 15V23.5547L60 53.5547V85H40V53.5547L10 23.5547V15H90Z" />
+  </svg>
+  <div class="section-categories__list">
+    @for (category of categories; track category.id) {
+      <div class="section-category">
+        <p class="text-category">{{category.nombre}}</p>
+        @if ((category.nombre !== 'Todos' && category.nombre !== 'Sin Categoria')) {
+          <svg class="section-category__delete" width="80" height="80" viewBox="0 0 80 80" fill="#55003F">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M80 40C80 62.0914 62.0914 80 40 80C17.9086 80 0 62.0914 0 40C0 17.9086 17.9086 0 40 0C62.0914 0 80 17.9086 80 40ZM34 34V16H46V34H64V46H46V64H34V46H16V34H34Z" />
+        </svg>}
+      </div>
+    }
+  </div>
+  <svg (click)="isVisibleNewCategory = !isVisibleNewCategory" class="section-categories__iconFolder" width="80" height="64" viewBox="0 0 80 64" fill="#FF31D9">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0V64H80V8H40L32 0H0ZM40 55C50.4934 55 59 46.4934 59 36C59 25.5066 50.4934 17 40 17C29.5066 17 21 25.5066 21 36C21 46.4934 29.5066 55 40 55ZM37.15 24.6909V33.2409H28.6V38.9409H37.15V47.4909H42.85V38.9409H51.4V33.2409H42.85V24.6909H37.15Z" />
+  </svg>
+</div>
+@if (isVisibleNewCategory) {
+  <div class="section-new-categories">
+    <input class="input-new-category" type="text" placeholder="Agregar Categoria">
+    <svg class="icon-send-category" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_366_36)">
+        <path d="M13.9164 13.8473C12.9439 11.8939 13.7202 11.0951 15.7268 12.0985L87.0441 47.7613C89.0199 48.7506 89.0395 50.4293 87.173 51.4663L18.4005 89.6738C16.4948 90.7332 15.5895 89.9289 16.3686 87.8942L28.9662 55.1517L68.2023 49.5465L28.9662 43.9414L13.9164 13.8473Z" fill="#FF31D9"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_366_36">
+          <rect width="100" height="100" fill="white"/>
+        </clipPath>
+      </defs>
+    </svg>
+  </div>
+}
