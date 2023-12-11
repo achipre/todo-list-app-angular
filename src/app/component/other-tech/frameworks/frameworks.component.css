@@ -1,6 +1,7 @@
 .tech-angular{
   background-color: var(--primary-color);
   border-radius: 50%;
+  padding: 1rem;
 }
 .tech-angular path{
   animation: animAngular 5s linear infinite;
@@ -20,5 +21,6 @@
 .tech-react, .tech-vue, .tech-svelte {
   cursor: pointer;
   filter: grayscale(1);
+  padding: 1rem;
 
 }

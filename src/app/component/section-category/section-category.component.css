@@ -8,15 +8,19 @@
 .section-categories__iconFilter{
   cursor: pointer;
   padding: 8px 0;
-  min-width: 80px;
+  width: 80px;
+  min-width: 60px;
   height: 100%;
 }
 .section-categories__list{
-  overflow: scroll;
+  overflow-x: scroll;
   display: flex;
   align-items: center;
   gap: 1rem;
   height: 100%;
+}
+.section-categories__list::-webkit-scrollbar {
+  display: none;
 }
 .section-category{
   cursor: pointer;
@@ -26,20 +30,39 @@
   align-items: center;
   border-radius: 4px;
   min-width: 170px;
-  padding: 1.6rem;
-  padding-top:1.25rem;
+  max-width: 188px;
+  padding: 1rem 1.6rem;
   gap: 1.1rem;
   justify-content: space-between;
 }
-.text-category{
+.section-category-no-select {
+  cursor: pointer;
+  height: 100%;
+  background-color: var(--secondary-color);
+  font-weight: 100;
   display: flex;
-  line-height: .8rem;
+  align-items: center;
+  border-radius: 4px;
+  min-width: 170px;
+  max-width: 188px;
+  padding: 1rem 1.6rem;
+  gap: 1.1rem;
+  justify-content: space-between;
+
+}
+.text-category{
+  line-height: 3rem;
+  padding-bottom: .4rem;
   font-size: 2.8rem;
   text-wrap: nowrap;
+  overflow: hidden;
+  width: 100%;
+  text-overflow: ellipsis;
 }
 .section-category__delete{
   transform: rotate(45deg);
   width: 3.2rem;
+  min-width: 3.2rem;
   max-height: 3.2rem;
   padding: .3rem;
 }
@@ -47,7 +70,9 @@
   cursor: pointer;
   padding-left: 1.5rem;
   margin-left: auto;
-  min-width: 90px;
+  width: 90px;
+  min-width: 80px;
+
   height: 100%;
 }
 .section-new-categories{
@@ -59,6 +84,36 @@
   display: flex;
   justify-content: center;
   transform: translateX(-50%);
+  animation: animatenewSection .25s ease-in-out both;
+}
+.hidden-new-categories{
+  animation: hiddenSection .25s ease-in-out both;
+}
+@keyframes animatenewSection {
+  0%{
+    transform: translateX(-50%) translateY(-70px);
+    opacity: 0;
+  }
+  40%{
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes hiddenSection {
+  0%{
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  60%{
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(-50%) translateY(-70px);
+    opacity: 0;
+  }
 }
 .input-new-category{
   font-family: 'Barlow Condensed', sans-serif;
@@ -81,8 +136,6 @@
   position: absolute;
   right: 0;
   width: 60px;
-
-  background-color: var(--terciary-color);
   height: 40px;
   cursor: pointer;
   z-index: 10;

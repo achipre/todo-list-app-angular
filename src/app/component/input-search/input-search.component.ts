@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-input-search',
@@ -8,8 +8,11 @@ import { Component, ViewChild } from '@angular/core';
   styleUrl: './input-search.component.css'
 })
 export class InputSearchComponent {
+  //accede a un elemento con el constructor
+  @ViewChild('inputSearch', { static: false}) inputSearch!: ElementRef;
   focusSearch(){
-    console.log('focusSearch');
+    this.inputSearch.nativeElement.focus();
+
   }
 
 }
