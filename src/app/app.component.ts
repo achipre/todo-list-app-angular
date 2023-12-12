@@ -8,11 +8,12 @@ import { SectionCategoryComponent } from './component/section-category/section-c
 import { LogoAddTodoComponent } from './component/logo-add-todo/logo-add-todo.component';
 import { NewTodoComponent } from './component/new-todo/new-todo.component';
 import { LogoNotFoundComponent } from './component/logo-not-found/logo-not-found.component';
+import { ArraysTodosComponent } from './component/arrays-todos/arrays-todos.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, LogoAngularComponent, FrameworksComponent, InputSearchComponent, SectionCategoryComponent, LogoAddTodoComponent, NewTodoComponent, LogoNotFoundComponent],
+  imports: [CommonModule, RouterOutlet, LogoAngularComponent, FrameworksComponent, InputSearchComponent, SectionCategoryComponent, LogoAddTodoComponent, NewTodoComponent, LogoNotFoundComponent, ArraysTodosComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
