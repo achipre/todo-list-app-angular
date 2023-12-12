@@ -2,14 +2,15 @@
   <app-frameworks></app-frameworks>
 </aside>
 <main>
-  <app-new-todo />
+  <app-new-todo [modal]="isVisibleModal" (sendCloseModal)="closeModal($event)"/>
   <header>
     <app-input-search></app-input-search>
-    <app-section-category></app-section-category>
+    <app-section-category [visibleInputCategory]="isVisibleCategory" (isVisibleInputCategory)="handleVisibleInput($event)"></app-section-category>
   </header>
   <article>
-    <app-logo-angular></app-logo-angular>
-    <app-logo-add-todo></app-logo-add-todo>
+    <app-logo-angular [visibleInputCategory]="isVisibleCategory" />
+    <app-logo-add-todo [visibleInputCategory]="isVisibleCategory" (sendOpenModal)="openModal($event)"></app-logo-add-todo>
+    <!-- <app-logo-not-found></app-logo-not-found> -->
   </article>
 </main>
 <aside>

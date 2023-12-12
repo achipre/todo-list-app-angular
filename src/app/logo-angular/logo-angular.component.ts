@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-logo-angular',
@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './logo-angular.component.css'
 })
 export class LogoAngularComponent {
+  @Input() visibleInputCategory: boolean = false
 
 }

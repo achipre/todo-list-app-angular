@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-logo-add-todo',
@@ -8,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrl: './logo-add-todo.component.css'
 })
 export class LogoAddTodoComponent {
+
+  @Input() visibleInputCategory: boolean = false
+
+  @Output() sendOpenModal = new EventEmitter<boolean>()
+
+  handleOpenModal() {
+    this.sendOpenModal.emit(true)
+  }
 
 }

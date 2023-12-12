@@ -1,0 +1,42 @@
+.not-found{
+  flex-direction: column;
+  gap: 4rem;
+  max-width: 1128px;
+  min-width: 168px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: calc(100vh - 210px);
+}
+.text-not-found {
+  font-size: 4rem;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  display: block;
+  color: var(--primary-color);
+}
+.icon-not-found{
+  width: 25%;
+  height: 25%;
+  min-width: 180px;
+}
+@media (width < 699px) {
+  .text-not-found {
+    font-size: 3.5rem;
+  }
+  .icon-not-found {
+    min-width: 150px;
+  }
+
+}
+@media (width < 320px) {
+  .text-not-found {
+    font-size: 3rem;
+    text-overflow: ellipsis;
+  }
+  .icon-not-found {
+    min-width: 120px;
+  }
+
+}

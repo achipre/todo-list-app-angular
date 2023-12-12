@@ -1,9 +1,23 @@
 svg{
-  position: absolute;
+  position: fixed;
+  left: 0;
+  right: 0;
   width: 100%;
-  min-width: 170px;
+  min-width: 196px;
   height: calc(100vh - 202px);
   filter: opacity(.2);
+  z-index: -1;
+}
+.categoryOpen {
+  animation: upBackground .25s ease both ;
+}
+@keyframes upBackground {
+  0% {
+    transform: translateY(-58px);
+  }
+  100% {
+    transform: translateY(-58px);
+  }
 }
 path{
   animation: animAngular 15s linear infinite;

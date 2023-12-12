@@ -1,17 +1,18 @@
-<section class="new-todo">
-  <header class="new-todo__header">
-    <svg class="icon-arrowback" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M19 50.2857L47.2857 22M19 50.2857L47.2857 78.5714M19 50.2857H85" stroke="#55003F" stroke-width="12" stroke-linecap="square"/>
+@if (modal) {
+  <section #sectionNew class="new-todo">
+    <header class="new-todo__header">
+      <svg (click)="handleCloseModal()" class="icon-arrowback" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 50.2857L47.2857 22M19 50.2857L47.2857 78.5714M19 50.2857H85" stroke="#55003F" stroke-width="12" stroke-linecap="square"/>
+      </svg>
+      <input class="new-todo__title" type="text" placeholder="Titulo" />
+      <aside>
+        <p class="new-todo__date">{{date}}</p>
+        <p class="new-todo__hours">{{hours}}</p>
+      </aside>
+    </header>
+    <textarea class="new-todo__textarea" placeholder="Empieza a escribir"></textarea>
+    <svg (click)="saveTodo()" class="icon-save" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M90 27.7778V90H10V10H72.2222L90 27.7778ZM50 76.6667C53.7037 76.6667 56.8519 75.3704 59.4444 72.7778C62.037 70.1852 63.3333 67.037 63.3333 63.3333C63.3333 59.6296 62.037 56.4815 59.4444 53.8889C56.8519 51.2963 53.7037 50 50 50C46.2963 50 43.1482 51.2963 40.5556 53.8889C37.963 56.4815 36.6667 59.6296 36.6667 63.3333C36.6667 67.037 37.963 70.1852 40.5556 72.7778C43.1482 75.3704 46.2963 76.6667 50 76.6667ZM23.3333 41.1111H63.3333V23.3333H23.3333V41.1111Z" fill="#55003F"/>
     </svg>
-    <input class="new-todo__title" type="text" placeholder="Titulo" />
-    <aside>
-      <p class="new-todo__date">{{date}}</p>
-      <p class="new-todo__hours">{{hours}}</p>
-    </aside>
-  </header>
-  <textarea class="new-todo__textarea" placeholder="Empieza a escribir"></textarea>
-  <svg class="icon-save" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M90 27.7778V90H10V10H72.2222L90 27.7778ZM50 76.6667C53.7037 76.6667 56.8519 75.3704 59.4444 72.7778C62.037 70.1852 63.3333 67.037 63.3333 63.3333C63.3333 59.6296 62.037 56.4815 59.4444 53.8889C56.8519 51.2963 53.7037 50 50 50C46.2963 50 43.1482 51.2963 40.5556 53.8889C37.963 56.4815 36.6667 59.6296 36.6667 63.3333C36.6667 67.037 37.963 70.1852 40.5556 72.7778C43.1482 75.3704 46.2963 76.6667 50 76.6667ZM23.3333 41.1111H63.3333V23.3333H23.3333V41.1111Z" fill="#55003F"/>
-  </svg>
-
-</section>
+  </section>
+}

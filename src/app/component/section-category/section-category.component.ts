@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-section-category',
@@ -17,16 +17,15 @@ export class SectionCategoryComponent {
   ]
 
   // Visibilidad  del Input
-  isVisibleNewCategory = false
-  handleVisibleInput = () => {
-    if(this.isVisibleNewCategory) {
+  @Input() visibleInputCategory = false
+  @Output() isVisibleInputCategory = new EventEmitter<boolean>()
+  handleClickVisibleInput = () => {
+    if(this.visibleInputCategory) {
       const elementoInputCategory = document.querySelector('.section-new-categories')
       elementoInputCategory?.classList.add('hidden-new-categories')
-      setTimeout(() => {
-        this.isVisibleNewCategory = false
-      }, 250);
+      this.isVisibleInputCategory.emit(false)
     } else {
-      this.isVisibleNewCategory = true
+      this.isVisibleInputCategory.emit(true)
       setTimeout(() => {
         this.inputCategory?.nativeElement?.focus()
       }, 5);
@@ -52,7 +51,7 @@ export class SectionCategoryComponent {
     newArrCategories.push(newCategory)
     this.categories = newArrCategories
     this.inputCategory.nativeElement.value = ''
-    this.handleVisibleInput()
+    this.handleClickVisibleInput()
   }
   // Seleccionar una categoria
   handleSelectCategory(id: string){
