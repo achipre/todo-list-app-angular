@@ -10,6 +10,13 @@ import { NewTodoComponent } from './component/new-todo/new-todo.component';
 import { LogoNotFoundComponent } from './component/logo-not-found/logo-not-found.component';
 import { ArraysTodosComponent } from './component/arrays-todos/arrays-todos.component';
 
+interface Todo {
+  id: string
+  titulo: string
+  description: string
+  category: string
+  date: string
+}
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -18,6 +25,11 @@ import { ArraysTodosComponent } from './component/arrays-todos/arrays-todos.comp
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  constructor(){
+    // cargar todos del localStorage
+    this.cargarTodos()
+
+  }
   title = 'todo-app-angular';
   // Visibilidad del Modal
   isVisibleModal = false
@@ -39,5 +51,22 @@ export class AppComponent {
     } else {
       this.isVisibleCategory = openInput
     }
+  }
+  // Array de Todos
+  todos: Todo[] = []
+  // Obtener informacion de un nuevo Todo
+  cargarTodos (){
+    if(localStorage.getItem('todosAngular') === null){
+      this.todos = []
+      localStorage.setItem('todosAngular', JSON.stringify(this.todos))
+      return this.todos ;
+    } else {
+      console.log(this.todos);
+      return this.todos = JSON.parse(localStorage.getItem('todosAngular')!)
+    }
+
+  }
+  handleNewTodo = (todo: Todo) => {
+    this.todos.push(todo)
   }
 }

@@ -1,5 +1,5 @@
 <section class="section-todos">
-  @for(todo of todos; track todo.id){
+  @for(todo of arrayTodos; track todo.id){
     <article class="article-todo">
       <p class="article-todo__title">{{todo.titulo}}</p>
       <p class="article-todo__description">{{todo.description}}</p>
@@ -7,16 +7,17 @@
         <p class="article-todo__category">{{todo.category}}</p>
         <p class="article-todo__date">{{todo.date}}</p>
       </div>
-      <svg class="article-todo__iconDelete" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg (click)="handleDelete(todo.id)" class="article-todo__iconDelete" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M40 0C62.12 0 80 17.88 80 40C80 62.12 62.12 80 40 80C17.88 80 0 62.12 0 40C0 17.88 17.88 0 40 0ZM60 20H50L46 16H34L30 20H20V28H60V20ZM28 64H52C53.0609 64 54.0783 63.5786 54.8284 62.8284C55.5786 62.0783 56 61.0609 56 60V32H24V60C24 61.0609 24.4214 62.0783 25.1716 62.8284C25.9217 63.5786 26.9391 64 28 64Z" fill="#55003F"/>
       </svg>
-
     </article>
   }
-  <article class="article-todo-new">
-    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M80 40C80 62.0914 62.0914 80 40 80C17.9086 80 0 62.0914 0 40C0 17.9086 17.9086 0 40 0C62.0914 0 80 17.9086 80 40ZM34 34V16H46V34H64V46H46V64H34V46H16V34H34Z" fill="#FF31D9"/>
-    </svg>
 
-  </article>
+  @if(arrayTodos.length > 0) {
+    <article (click)="sendOpenModal()" class="article-todo-new">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M80 40C80 62.0914 62.0914 80 40 80C17.9086 80 0 62.0914 0 40C0 17.9086 17.9086 0 40 0C62.0914 0 80 17.9086 80 40ZM34 34V16H46V34H64V46H46V64H34V46H16V34H34Z" fill="#FF31D9"/>
+      </svg>
+    </article>
+  }
 </section>

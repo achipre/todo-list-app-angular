@@ -9,9 +9,12 @@
   </header>
   <article>
     <app-logo-angular [visibleInputCategory]="isVisibleCategory" />
-    <!-- <app-logo-add-todo [visibleInputCategory]="isVisibleCategory" (sendOpenModal)="openModal($event)"></app-logo-add-todo> -->
+    @if(todos.length < 1){
+      <app-logo-add-todo [visibleInputCategory]="isVisibleCategory" (sendOpenModal)="openModal($event)"></app-logo-add-todo>
+    }
     <!-- <app-logo-not-found></app-logo-not-found> -->
-    <app-arrays-todos></app-arrays-todos>
+    @if(todos.length > 0){<app-arrays-todos  [arrayTodos]="todos"  (handleOpenModal)="openModal($event)">
+    </app-arrays-todos>}
   </article>
 </main>
 <aside>

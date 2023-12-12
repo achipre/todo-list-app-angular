@@ -1,4 +1,9 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+interface Category {
+  id: string
+  nombre: string
+  isSelect: boolean
+}
 
 @Component({
   selector: 'app-section-category',
@@ -6,15 +11,16 @@ import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@
   imports: [],
   templateUrl: './section-category.component.html',
   styleUrl: './section-category.component.css',
-  })
+})
+
 export class SectionCategoryComponent {
+  constructor(){
+    this.obtenerCategories()
+  }
+
+
 
   @ViewChild('inputCategory', { static: false}) inputCategory!: ElementRef
-  categories = [
-    {id: '1', nombre: 'Todos', isSelect: true},
-    {id: '2', nombre: 'Sin Categoria', isSelect: false},
-    {id: '', nombre: 'Peliculas mas destacadas', isSelect: false}
-  ]
 
   // Visibilidad  del Input
   @Input() visibleInputCategory = false
@@ -31,24 +37,40 @@ export class SectionCategoryComponent {
       }, 5);
     }
   }
+
+  // Manejo de Categoria
+  categories: Category[] = []
+
+  obtenerCategories = () => {
+    if(localStorage.getItem('categoriesAngular') === null){
+      const newCategories = [{id: '1', nombre: 'Todos', isSelect: true}, {id: '2', nombre: 'Sin Categoria', isSelect: false}]
+      localStorage.setItem('categoriesAngular', JSON.stringify(newCategories))
+      this.categories = newCategories
+    } else {
+      this.categories = JSON.parse(localStorage.getItem('categoriesAngular')!)
+    }
+  }
   // Eliminar una categoria
+
   handleDeleteCategory = (id: string) => {
     const filterCategory = this.categories.find(category => category.id === id)
     if(filterCategory?.isSelect){
       const firstCategory = this.categories.map(category => category.nombre === 'Todos' ? {...category, isSelect: true}: {...category, isSelect:false})
       const newCategories = firstCategory.filter(category => category.id !== id)
+      localStorage.setItem('categoriesAngular', JSON.stringify(newCategories))
       this.categories = newCategories
     } else {
       const newCategories = this.categories.filter(category => category.id !== id)
+      localStorage.setItem('categoriesAngular', JSON.stringify(newCategories))
       this.categories = newCategories
     }
-
   }
   // Agregar una categoria
   handleAddCategorie () {
     const newArrCategories = [...this.categories.map(category => category && {...category , isSelect: false})]
     const newCategory = {id: Math.random().toString(), nombre: this.inputCategory.nativeElement.value, isSelect: true}
     newArrCategories.push(newCategory)
+    localStorage.setItem('categoriesAngular', JSON.stringify(newArrCategories))
     this.categories = newArrCategories
     this.inputCategory.nativeElement.value = ''
     this.handleClickVisibleInput()
@@ -56,6 +78,7 @@ export class SectionCategoryComponent {
   // Seleccionar una categoria
   handleSelectCategory(id: string){
     const newCategories = this.categories.map(category => category.id === id ? {...category, isSelect: true}: {...category, isSelect: false})
+    localStorage.setItem('categoriesAngular', JSON.stringify(newCategories))
     this.categories = newCategories
 
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-arrays-todos',
@@ -8,21 +8,15 @@ import { Component } from '@angular/core';
   styleUrl: './arrays-todos.component.css'
 })
 export class ArraysTodosComponent {
-  todos = [
-    {
-      id: '1',
-      titulo: 'Pelicula',
-      description: 'Esta es la mejor Pelicula de todos los tiempos',
-      category: 'Todos',
-      date: '20/12/2024'
-    },
-    {
-      id: '2',
-      titulo: 'Serie',
-      description: 'Esta es la mejor Pelicula de todos los tiempos',
-      category: 'Todos',
-      date: '20/12/2024'
-    },
-  ]
-
+  // Array Todos
+  @Input() arrayTodos!: {id: string, titulo: string, description: string, category: string,date: string }[]
+  // Open Modal
+  @Output() handleOpenModal = new EventEmitter<boolean>()
+  sendOpenModal(){
+    this.handleOpenModal.emit(true)
+  }
+  // Handle Delete
+  handleDelete(id: string){
+    this.arrayTodos = this.arrayTodos.filter(todo => todo.id !== id)
+  }
 }
