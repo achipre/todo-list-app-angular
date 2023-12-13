@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-input-search',
@@ -8,11 +8,29 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   styleUrl: './input-search.component.css'
 })
 export class InputSearchComponent {
-  //accede a un elemento con el constructor
-  @ViewChild('inputSearch', { static: false}) inputSearch!: ElementRef;
+
+  // Accede a un elemento con el constructor
+  @ViewChild('inputSearch') inputSearch!: ElementRef;
   focusSearch(){
     this.inputSearch.nativeElement.focus();
-
   }
+  // Value Input
+  @Output() sendValueSearch = new EventEmitter<string>()
+
+  handleValueSearch(event: Event){
+    const infoInputSearch = (event.target as HTMLInputElement).value
+    this.sendValueSearch.emit(infoInputSearch)
+  }
+  // @Output() valueInputChange = new EventEmitter<string>();
+  // onValueInputChange(value: string) {
+  //   this.valueInputChange.emit(value);
+  // }
+
+  // handleInputSearch(event: Event) {
+  //   const valueInputSearch = (event.target as HTMLInputElement).value
+  //   console.log(valueInputSearch)
+  //   console.log(this.valueInput);
+
+  // }
 
 }

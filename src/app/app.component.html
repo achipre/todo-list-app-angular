@@ -4,19 +4,22 @@
 <main>
   <app-new-todo [modal]="isVisibleModal" (sendCloseModal)="closeModal($event)"/>
   <header>
-    <app-input-search></app-input-search>
+    <app-input-search (sendValueSearch)="infoSearch($event)" ></app-input-search>
     <app-section-category [visibleInputCategory]="isVisibleCategory" (isVisibleInputCategory)="handleVisibleInput($event)"></app-section-category>
   </header>
   <article>
     <app-logo-angular [visibleInputCategory]="isVisibleCategory" />
-    @if(todos.length < 1){
+    @if(todos.length < 1 && valueSearch.length < 1){
       <app-logo-add-todo [visibleInputCategory]="isVisibleCategory" (sendOpenModal)="openModal($event)"></app-logo-add-todo>
     }
-    <!-- <app-logo-not-found></app-logo-not-found> -->
-    @if(todos.length > 0){<app-arrays-todos  [arrayTodos]="todos"  (handleOpenModal)="openModal($event)">
+    @if(valueSearch.length > 0 && todosBySearch.length === 0){
+      <app-logo-not-found></app-logo-not-found>
+    }
+    @if(todosBySearch.length > 0){<app-arrays-todos  [arrayTodos]="todosBySearch" (idArray)="deleteTodo($event)" (handleOpenModal)="openModal($event)">
     </app-arrays-todos>}
   </article>
 </main>
+
 <aside>
   <div class="github-profile"></div>
 </aside>

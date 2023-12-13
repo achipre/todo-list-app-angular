@@ -1,9 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-interface Category {
-  id: string
-  nombre: string
-  isSelect: boolean
-}
+import { Category } from '../../interfaces/todo.interface';
+
 
 @Component({
   selector: 'app-section-category',
@@ -80,9 +77,6 @@ export class SectionCategoryComponent {
     const newCategories = this.categories.map(category => category.id === id ? {...category, isSelect: true}: {...category, isSelect: false})
     localStorage.setItem('categoriesAngular', JSON.stringify(newCategories))
     this.categories = newCategories
-
-
-
   }
 
 }
