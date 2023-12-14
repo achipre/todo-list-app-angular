@@ -2,10 +2,10 @@
   <app-frameworks></app-frameworks>
 </aside>
 <main>
-  <app-new-todo [modal]="isVisibleModal" (sendCloseModal)="closeModal($event)"/>
+  <app-new-todo [modal]="isVisibleModal" (sendCloseModal)="closeModal($event)" (sendTodo)="saveTodo($event)"/>
   <header>
     <app-input-search (sendValueSearch)="infoSearch($event)" ></app-input-search>
-    <app-section-category [visibleInputCategory]="isVisibleCategory" (isVisibleInputCategory)="handleVisibleInput($event)"></app-section-category>
+    <app-section-category [visibleInputCategory]="isVisibleCategory" (isVisibleInputCategory)="handleVisibleInput($event)" (categorySelect)="valueCategory($event)"></app-section-category>
   </header>
   <article>
     <app-logo-angular [visibleInputCategory]="isVisibleCategory" />

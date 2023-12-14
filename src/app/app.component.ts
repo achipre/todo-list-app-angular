@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { LogoAngularComponent } from './logo-angular/logo-angular.component';
@@ -24,7 +24,10 @@ export class AppComponent {
     // cargar todos del localStorage
     this.cargarTodos()
   }
+  ngOnInit(){
+    this.todosBySearch = this.todos
 
+  }
   // Visibilidad del Modal
   isVisibleModal = false
 
@@ -70,11 +73,28 @@ export class AppComponent {
   valueSearch:string = ''
   infoSearch(value: string){
     this.valueSearch = value.toLowerCase()
-    const newArr: Todo[] = this.todos.filter(todo => todo.titulo.toLowerCase().includes(this.valueSearch))
+    const newArr: Todo[] = this.todos.filter(todo => todo.titulo.toLowerCase().includes(this.valueSearch) || todo.description.toLowerCase().includes(this.valueSearch))
     if (value.length > 0) {
       this.todosBySearch = newArr
     } else {
       this.todosBySearch = this.todos
     }
   }
+  // Value Category
+  category: string = ''
+  valueCategory(category: string){
+    this.category = category
+
+
+  }
+  // NewTodo Todo
+  saveTodo(valueNewTodo: Todo){
+    const objTodo = {...valueNewTodo, category: this.category}
+    const newTodos: Todo[] = [...this.todos, objTodo]
+    localStorage.setItem('todosAngular', JSON.stringify(newTodos))
+    this.todos = newTodos
+    this.todosBySearch = newTodos
+  }
+
+
 }

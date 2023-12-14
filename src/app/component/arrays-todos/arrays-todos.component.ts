@@ -14,6 +14,7 @@ export class ArraysTodosComponent {
   sendOpenModal(){
     this.handleOpenModal.emit(true)
   }
+
   // Array Todos
   @Input() arrayTodos: Todo[] = []
   @Output() idArray = new EventEmitter<string>()
@@ -22,4 +23,5 @@ export class ArraysTodosComponent {
   sendDelete(id: string){
     this.idArray.emit(id)
   }
+
 }

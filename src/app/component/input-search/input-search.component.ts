@@ -21,16 +21,5 @@ export class InputSearchComponent {
     const infoInputSearch = (event.target as HTMLInputElement).value
     this.sendValueSearch.emit(infoInputSearch)
   }
-  // @Output() valueInputChange = new EventEmitter<string>();
-  // onValueInputChange(value: string) {
-  //   this.valueInputChange.emit(value);
-  // }
-
-  // handleInputSearch(event: Event) {
-  //   const valueInputSearch = (event.target as HTMLInputElement).value
-  //   console.log(valueInputSearch)
-  //   console.log(this.valueInput);
-
-  // }
 
 }

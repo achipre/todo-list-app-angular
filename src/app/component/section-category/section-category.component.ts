@@ -34,6 +34,7 @@ export class SectionCategoryComponent {
       }, 5);
     }
   }
+  @Output() categorySelect = new EventEmitter<string>()
 
   // Manejo de Categoria
   categories: Category[] = []
@@ -75,6 +76,7 @@ export class SectionCategoryComponent {
   // Seleccionar una categoria
   handleSelectCategory(id: string){
     const newCategories = this.categories.map(category => category.id === id ? {...category, isSelect: true}: {...category, isSelect: false})
+    this.categorySelect.emit(this.categories.find(category => category.id === id)?.nombre!.toString()!)
     localStorage.setItem('categoriesAngular', JSON.stringify(newCategories))
     this.categories = newCategories
   }

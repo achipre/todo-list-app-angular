@@ -2,8 +2,9 @@ export interface Todo {
   id: string
   titulo: string
   description: string
-  category: string
-  date: string
+  category?: string
+  date: string,
+  hours: string,
 }
 export interface Category {
   id: string
